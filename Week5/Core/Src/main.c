@@ -75,6 +75,7 @@ static void MX_TIM5_Init(void);
 /* USER CODE BEGIN PFP */
 //Read speed of encoder
 void encoderSpeedReaderCycle();
+void MeasureSpeed();
 uint64_t micros();
 int RPM = 0;
 float T = 0;
@@ -140,9 +141,7 @@ int main(void)
 			HAL_GPIO_TogglePin(LD2_GPIO_Port,LD2_Pin);
 		}
 
-		T = MeanTime * (10^-6);   //Sec
-		f = (10^-3)/T;  //kHz
-		RPM = (f * 60 *1000)/(12*64);
+		MeasureSpeed();
 
 
     /* USER CODE END WHILE */
@@ -273,7 +272,7 @@ static void MX_TIM5_Init(void)
 
   /* USER CODE END TIM5_Init 1 */
   htim5.Instance = TIM5;
-  htim5.Init.Prescaler = 0;
+  htim5.Init.Prescaler = 99;
   htim5.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim5.Init.Period = 4294967295;
   htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -413,6 +412,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
  {
 	 _micros += 4294967295;
  }
+}
+void MeasureSpeed()
+{
+	T = MeanTime * (0.000001);   //Sec
+	f = (0.001)/T;  //kHz
+	RPM = (f * 60 *1000)/(12*64);
 }
 /* USER CODE END 4 */
 
