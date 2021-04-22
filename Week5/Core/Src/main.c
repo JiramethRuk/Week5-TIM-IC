@@ -417,7 +417,7 @@ void MeasureSpeed()
 {
 	T = MeanTime * (0.000001);   //Sec
 	f = (0.001)/T;  //kHz
-	RPM = (f * 60 *1000)/(12*64);
+	RPM = (f * 60 * 1000)/(12*64);
 }
 /* USER CODE END 4 */
 

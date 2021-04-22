@@ -1953,7 +1953,7 @@ void MeasureSpeed()
  80012da:	4602      	mov	r2, r0
  80012dc:	4b12      	ldr	r3, [pc, #72]	; (8001328 <MeasureSpeed+0xa0>)
  80012de:	601a      	str	r2, [r3, #0]
-	RPM = (f * 60 *1000)/(12*64);
+	RPM = (f * 60 * 1000)/(12*64);
  80012e0:	4b11      	ldr	r3, [pc, #68]	; (8001328 <MeasureSpeed+0xa0>)
  80012e2:	edd3 7a00 	vldr	s15, [r3]
  80012e6:	ed9f 7a11 	vldr	s14, [pc, #68]	; 800132c <MeasureSpeed+0xa4>
